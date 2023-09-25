@@ -1,14 +1,54 @@
-# Welcome to your CDK TypeScript project
+# cdk-microservices-rollingupdate-template
 
-This is a blank project for CDK development with TypeScript.
+## Overview
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This repository contains cdk template for microservices (rolling update) architecture.
 
-## Useful commands
+&emsp;
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## Diagram
+
+![Diagram](./images/diagram.drawio.png)
+
+## Required
+
+- [AWS CLI](https://aws.amazon.com/cli) - v2 or later
+- [AWS CDK](https://aws.amazon.com/jp/cdk) - v2 or later
+- [Docker](https://www.docker.com/) - v20 or later
+- [Node.js](https://nodejs.org/ja) - v16 or later
+- [TypeScript](https://www.typescriptlang.org/) - v4 or later
+
+## Getting Started
+
+1. Clone this repository.
+
+```shell
+git clone https://github.com/tsukuboshi/cdk-microservices-rollingupdate-template
+```
+
+2. Change directory.
+
+```shell
+cd cdk-microservices-template
+```
+
+3. Install npm packages.
+
+```shell
+npm install
+```
+
+4. If this is your first CDK deployment, run this command only once.
+
+```shell
+cdk bootstrap
+```
+
+5. Launch Docker Client Software.
+
+6. Deploy CDK Code.
+
+
+```shell
+cdk deploy
+```
