@@ -107,10 +107,10 @@ export class CdkMicroservicesRollingupdateTemplateStack extends Stack {
       "CodeCommitRepo",
       {
         repositoryName: `${resourceName}-codecommit-repo`,
-        code: codecommit.Code.fromDirectory(
-          path.join(__dirname, "..", "app"),
-          "main"
-        ),
+        // code: codecommit.Code.fromDirectory(
+        //   path.join(__dirname, "..", "app"),
+        //   "main"
+        // ),
       }
     );
 
@@ -150,6 +150,7 @@ export class CdkMicroservicesRollingupdateTemplateStack extends Stack {
           logGroup: buildLogGroup,
         },
       },
+      // buildSpec: codebuild.BuildSpec.fromSourceFilename('./app/buildspec.yml'),
       buildSpec: codebuild.BuildSpec.fromObject({
         version: "0.2",
         phases: {
