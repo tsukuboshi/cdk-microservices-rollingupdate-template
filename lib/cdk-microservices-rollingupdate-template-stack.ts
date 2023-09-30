@@ -150,7 +150,7 @@ export class CdkMicroservicesRollingupdateTemplateStack extends Stack {
           logGroup: buildLogGroup,
         },
       },
-      // buildSpec: codebuild.BuildSpec.fromSourceFilename('./app/buildspec.yml'),
+      // buildSpec: codebuild.BuildSpec.fromSourceFilename("buildspec.yml"),
       buildSpec: codebuild.BuildSpec.fromObject({
         version: "0.2",
         phases: {
@@ -158,7 +158,7 @@ export class CdkMicroservicesRollingupdateTemplateStack extends Stack {
             commands: [
               "echo Logging in to Amazon ECR...",
               "aws --version",
-              `aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${accountId}.dkr.ecr.${region}.amazonaws.com`,
+              "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com",
               "COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)",
               "IMAGE_TAG=${COMMIT_HASH:=latest}",
             ],
@@ -167,7 +167,7 @@ export class CdkMicroservicesRollingupdateTemplateStack extends Stack {
             commands: [
               "echo Build started on `date`",
               "echo Building the Docker image...",
-              "docker build -t $REPOSITORY_URI:latest ${CONTAINER_BUILD_PATH}",
+              "docker build -t $REPOSITORY_URI:latest $CONTAINER_BUILD_PATH",
               "docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG",
             ],
           },
